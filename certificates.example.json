@@ -1,0 +1,26 @@
+[
+  {
+    "name": "John Doe",
+    "primaryEmail": "john.doe@example.com",
+    "passphrase": "SecurePass123!",
+    "additionalEmails": ["j.doe@example.com", "johndoe@example.com"]
+  },
+  {
+    "name": "Jane Smith",
+    "primaryEmail": "jane.smith@example.com",
+    "passphrase": "AnotherSecurePass456!",
+    "additionalEmails": ["jsmith@example.com"],
+    "expirationYears": 10
+  },
+  {
+    "name": "Bob Johnson",
+    "primaryEmail": "bob.johnson@example.com",
+    "passphrase": "BobsSecurePass789!",
+    "additionalEmails": [],
+    "keyType": "RSA",
+    "keyCurve": null,
+    "subkeyType": "RSA",
+    "subkeyCurve": null,
+    "expirationYears": 2
+  }
+]

@@ -1,0 +1,64 @@
+name: Close stale issues and PRs
+
+on:
+  schedule:
+    - cron: "0 7 * * *" # Run daily at 07:00 UTC
+  workflow_dispatch:
+
+jobs:
+  stale:
+    name: Mark and close stale issues and PRs
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      issues: write
+      pull-requests: write
+
+    steps:
+      - name: Handle stale issues and PRs
+        uses: actions/stale@v10.0.0
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+          days-before-issue-stale: 30
+          days-before-pr-stale: 30
+          days-before-issue-close: 7
+          days-before-pr-close: 7
+
+          stale-issue-message: |
+            This issue has been marked as stale because it has not had any activity for 30 days. The issue will be **closed in 7 days** if no further activity occurs.
+
+            **To keep this issue open**, simply add a comment or add the `wip` label. Add labels like `blocked`, `good first issue`, or `help wanted` to prevent future stale marking.
+
+          stale-pr-message: |
+            This pull request has been marked as stale because it has not had any activity for 30 days. The PR will be **closed in 7 days** if no further activity occurs.
+
+            **To keep this PR open**, simply add a comment, push new commits, or remove the `needs review` label. Add the `wip` label to prevent future stale marking..
+
+            **Need to rebase or update?** Consider rebasing against the latest target branch to show continued development.
+
+          close-issue-message: |
+            This issue has been closed due to inactivity.
+
+            **If this issue is still relevant**, comment on this issue explaining the current status or reopen it manually.
+
+            **Want to prevent this in the future?** Keep issues active with regular updates and use exempt labels like `good first issue`, `help wanted`, or `wip`.
+
+          close-pr-message: |
+            This pull request has been closed due to inactivity.
+
+            **If this PR is still being worked on**, comment on this PR explaining the current status, push new commits, or reopen it manually. Alternatively, create a new PR with updated code and reference this PR in the new one for context.
+
+            **Want to prevent this in the future?** Keep PRs active with regular commits or comments, use drafted PRs, or use exempt labels like `release`, `security`, `wip`.
+
+          stale-issue-label: needs review
+          stale-pr-label: needs review
+
+          exempt-issue-labels: blocked,good first issue,help wanted,release,security,wip
+          exempt-pr-labels: blocked,good first issue,help wanted,release,security,wip
+
+          remove-issue-stale-when-updated: true
+          remove-pr-stale-when-updated: true
+
+          exempt-all-milestones: true
+          exempt-draft-pr: true
