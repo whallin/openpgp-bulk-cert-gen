@@ -1,4 +1,4 @@
-![Repository banner for @whallin/openpgp-bulk-cert-gen](https://raw.githubusercontent.com/whallin/.github/refs/heads/develop/banner.png)
+![Repository banner for @whallin/openpgp-bulk-cert-gen](https://raw.githubusercontent.com/whallin/.github/refs/heads/main/banner.png)
 
 # @whallin/openpgp-bulk-cert-gen
 
